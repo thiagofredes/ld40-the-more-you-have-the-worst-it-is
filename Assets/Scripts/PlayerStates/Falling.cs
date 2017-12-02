@@ -35,6 +35,6 @@ public class Falling : PlayerState
 		}
 
 		//player.animator.SetFloat ("Forward", movement.normalized.magnitude);
-		player.characterController.Move (Time.deltaTime * (-Vector3.up * 9.8f * fallTime + 0.75f * movement * player.movementSpeed));
+		player.characterController.Move (Time.deltaTime * (-Vector3.up * 9.8f * fallTime + 0.75f * movement * player.UnscaledMovementSpeed));
 	}
 }

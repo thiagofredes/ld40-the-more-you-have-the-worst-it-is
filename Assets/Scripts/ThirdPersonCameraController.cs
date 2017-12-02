@@ -44,6 +44,8 @@ public class ThirdPersonCameraController : MonoBehaviour
 
 	public float cameraSkin = 0.5f;
 
+	public string[] layersToIgnore;
+
 	private float currentDistanceToPlayer;
 
 	private GameObject playerRef = null;
@@ -124,7 +126,7 @@ public class ThirdPersonCameraController : MonoBehaviour
 		Vector3 speed = new Vector3 ();
 
 		// If there was a hit, it means something is between player and camera
-		if (Physics.Raycast (lookAtPosition, cameraDirection.normalized, out hit, maxDistanceToPlayer, ~LayerMask.GetMask ("Player", "Enemy"))) {
+		if (Physics.Raycast (lookAtPosition, cameraDirection.normalized, out hit, maxDistanceToPlayer, ~LayerMask.GetMask (layersToIgnore))) {
 			currentDistanceToPlayer = Mathf.Clamp (hit.distance - cameraSkin, minDistanceToPlayer, maxDistanceToPlayer);
 		} else {
 			currentDistanceToPlayer = maxDistanceToPlayer;

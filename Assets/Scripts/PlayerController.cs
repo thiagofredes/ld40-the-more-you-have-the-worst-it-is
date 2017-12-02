@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+
+public class PlayerController : MonoBehaviour, IMagnetic
 {
 	public CharacterController characterController;
 
 	public float movementSpeed = 5f;
 
+	public float UnscaledMovementSpeed {
+		get { return this.originalMovementSpeed; }
+	}
+
 	private PlayerState currentState;
 
+	private float originalMovementSpeed;
 
 	void Start ()
 	{
+		originalMovementSpeed = movementSpeed;
 		currentState = new Running (this);
 	}
 
@@ -42,4 +49,16 @@ public class PlayerController : MonoBehaviour
 
 		return false;
 	}
+
+	public void Attract (Vector3 direction, float strength)
+	{
+		this.movementSpeed = originalMovementSpeed - strength;
+		this.characterController.Move (direction * strength * Time.deltaTime);
+	}
+
+	public void ResetSpeed ()
+	{
+		this.movementSpeed = originalMovementSpeed;
+	}
+
 }
