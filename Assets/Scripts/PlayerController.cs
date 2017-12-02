@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerController : MonoBehaviour, IMagnetic
+public class PlayerController : MonoBehaviour
 {
 	public CharacterController characterController;
 
 	public float movementSpeed = 5f;
+
+	private int numCoins;
 
 	public float UnscaledMovementSpeed {
 		get { return this.originalMovementSpeed; }
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour, IMagnetic
 	{
 		originalMovementSpeed = movementSpeed;
 		currentState = new Running (this);
+		numCoins = 0;
 	}
 
 	void Update ()
@@ -61,4 +64,8 @@ public class PlayerController : MonoBehaviour, IMagnetic
 		this.movementSpeed = originalMovementSpeed;
 	}
 
+	public int GetNumCoins ()
+	{
+		return numCoins;
+	}
 }
