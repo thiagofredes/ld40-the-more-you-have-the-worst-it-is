@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class Running : PlayerState
 {
-
-	private PlayerController player;
-
 	public Running (PlayerController player)
 	{
 		this.player = player;

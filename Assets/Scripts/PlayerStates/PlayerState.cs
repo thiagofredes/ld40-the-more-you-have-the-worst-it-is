@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class PlayerState
 {
-	private PlayerController player;
+	protected PlayerController player;
 
 	public virtual void OnEnter ()
 	{
