@@ -6,10 +6,14 @@ public class Patrolling : EnemyState
 {
 	int currentPatrolPoint = 0;
 
+	private Coroutine patrollingCoroutine;
+
 	public Patrolling (EnemyController enemy)
 	{
+		Debug.Log ("Patrolling");
 		this.enemy = enemy;
-		enemy.StartCoroutine (Patrol ());
+		this.enemy.magnet.active = false;
+		patrollingCoroutine = enemy.StartCoroutine (Patrol ());
 	}
 
 	public override void OnEnter ()
@@ -19,7 +23,8 @@ public class Patrolling : EnemyState
 
 	public override void OnExit ()
 	{
-		base.OnExit ();
+		enemy.StopCoroutine (patrollingCoroutine);
+		enemy.navMeshAgent.ResetPath ();
 	}
 
 	public override void Update ()

@@ -1,12 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyStates\Patrolling.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyStates\Chasing.cs">
     <Files>
-      <File FileName="Assets\Scripts\EnemyController.cs" Line="26" Column="32" />
-      <File FileName="Assets\Scripts\EnemyStates\Chasing.cs" Line="7" Column="16" />
-      <File FileName="Assets\Scripts\EnemyStates\Patrolling.cs" Line="31" Column="3" />
-      <File FileName="Assets\Scripts\EnemyStates\EnemyState.cs" Line="8" Column="12" />
-      <File FileName="Assets\Scripts\EnemyStates\PatrolPointsController.cs" Line="22" Column="16" />
+      <File FileName="Assets\Scripts\EnemyController.cs" Line="37" Column="34" />
+      <File FileName="Assets\Scripts\EnemyStates\Chasing.cs" Line="34" Column="3" />
+      <File FileName="Assets\Scripts\EnemyStates\Patrolling.cs" Line="27" Column="35" />
+      <File FileName="Assets\Scripts\EnemyStates\PatrolPointsController.cs" Line="32" Column="1" />
+      <File FileName="Assets\Scripts\Magnet.cs" Line="20" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

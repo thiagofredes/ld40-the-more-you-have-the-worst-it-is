@@ -17,27 +17,33 @@ public class Magnet : MonoBehaviour
 
 	public float openingAngle = 45f;
 
+	public bool active;
+
 	private int currentLevel;
 
 	private int numLevels;
 
 	private Collider thisCollider;
 
+
 	void Awake ()
 	{
 		thisCollider = GetComponent<MeshCollider> ();
 		numLevels = levels.Length;
 		currentLevel = 0;
+		active = false;
 	}
 
 	void OnTriggerStay (Collider other)
 	{
 		PlayerController player = other.GetComponent<PlayerController> ();
-		if (player != null) {
-			Vector3 direction = other.transform.position - this.transform.position;
-			if (Vector3.Angle (this.transform.forward, direction) <= openingAngle) {
-				SetMagnetismLevel (player.GetNumCoins ());
-				player.Attract (-direction.normalized, levels [currentLevel].baseStrength * (1f - (direction.magnitude / baseDistance)));
+		if (active) {
+			if (player != null) {
+				Vector3 direction = other.transform.position - this.transform.position;
+				if (Vector3.Angle (this.transform.forward, direction) <= openingAngle) {
+					SetMagnetismLevel (player.GetNumCoins ());
+					player.Attract (-direction.normalized, levels [currentLevel].baseStrength * (1f - (direction.magnitude / baseDistance)));
+				}
 			}
 		}
 	}
@@ -45,8 +51,10 @@ public class Magnet : MonoBehaviour
 	void OnTriggerExit (Collider other)
 	{
 		PlayerController magnetic = other.GetComponent<PlayerController> ();
-		if (magnetic != null) {
-			magnetic.ResetSpeed ();
+		if (active) {
+			if (magnetic != null) {
+				magnetic.ResetSpeed ();
+			}
 		}
 	}
 

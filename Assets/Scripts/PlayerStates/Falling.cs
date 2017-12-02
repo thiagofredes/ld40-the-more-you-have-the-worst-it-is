@@ -9,7 +9,6 @@ public class Falling : PlayerState
 	public Falling (PlayerController player)
 	{
 		this.player = player;
-		Debug.Log ("On Falling");
 	}
 
 	public override void OnEnter ()

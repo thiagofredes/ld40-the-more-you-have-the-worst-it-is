@@ -8,7 +8,6 @@ public class Running : PlayerState
 	public Running (PlayerController player)
 	{
 		this.player = player;
-		Debug.Log ("On Running");
 	}
 
 	public override void Update ()

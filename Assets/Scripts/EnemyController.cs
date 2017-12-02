@@ -7,6 +7,10 @@ public class EnemyController : MonoBehaviour
 {
 	public NavMeshAgent navMeshAgent;
 
+	public CharacterController characterController;
+
+	public Magnet magnet;
+
 	public int number;
 
 	private EnemyState currentState;
@@ -32,7 +36,7 @@ public class EnemyController : MonoBehaviour
 	{
 		PlayerController player = other.GetComponent<PlayerController> ();
 		if (player != null) {
-			Debug.Log ("Player is around me!");
+			SetState (new Chasing (this));
 		}
 	}
 }

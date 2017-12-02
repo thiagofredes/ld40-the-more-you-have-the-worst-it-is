@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 		float raycastDistance = this.characterController.height * 0.5f;
 		float sphereRadius = this.characterController.radius;
 
-		if (Physics.SphereCast (rayOrigin, sphereRadius, -Vector3.up, out groundHit, raycastDistance, ~LayerMask.GetMask ("Player"))) {
+		if (Physics.SphereCast (rayOrigin, sphereRadius, -Vector3.up, out groundHit, raycastDistance, ~LayerMask.GetMask ("Player", "Magnets", "EnemiesListeningRadius"))) {
 			this.characterController.Move (-Vector3.up * (sphereRadius + this.characterController.skinWidth));
 			return true;
 		}

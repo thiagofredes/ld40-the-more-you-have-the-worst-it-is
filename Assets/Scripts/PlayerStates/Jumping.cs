@@ -16,7 +16,6 @@ public class Jumping : PlayerState
 	public Jumping (PlayerController player)
 	{
 		this.player = player;
-		Debug.Log ("On Jumping");
 	}
 
 	public override void OnEnter ()
