@@ -259,6 +259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f527f318ae1a536449caf9502b7aecdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
+  gameEnded: 0
+  gameResumed: 0
   rotationSpeed: 2
   oscilationAmplitude: 2
 --- !u!4 &185434569
@@ -331,6 +334,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f527f318ae1a536449caf9502b7aecdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
+  gameEnded: 0
+  gameResumed: 0
   rotationSpeed: 2
   oscilationAmplitude: 2
 --- !u!4 &263955374
@@ -605,6 +611,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83188fd30b23bca4495bd7ec8de0d5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
+  gameEnded: 0
+  gameResumed: 0
   characterController: {fileID: 488733046}
   movementSpeed: 5
   layersToIgnoreWhenFalling:
@@ -653,6 +662,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f527f318ae1a536449caf9502b7aecdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
+  gameEnded: 0
+  gameResumed: 0
   rotationSpeed: 2
   oscilationAmplitude: 2
 --- !u!4 &507565946
@@ -942,6 +954,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d3f622d6f49c78488b62a91900e9a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
+  gameEnded: 0
+  gameResumed: 0
   navMeshAgent: {fileID: 621829566}
   characterController: {fileID: 621829573}
   magnet: {fileID: 1952011661}
@@ -1254,6 +1269,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f527f318ae1a536449caf9502b7aecdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
+  gameEnded: 0
+  gameResumed: 0
   rotationSpeed: 2
   oscilationAmplitude: 2
 --- !u!4 &916600496
@@ -1397,6 +1415,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f527f318ae1a536449caf9502b7aecdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
+  gameEnded: 0
+  gameResumed: 0
   rotationSpeed: 2
   oscilationAmplitude: 2
 --- !u!4 &997290401
@@ -1540,6 +1561,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea2186c75a46b7408dcc2f5c07e05dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
+  gameEnded: 0
+  gameResumed: 0
   sensivityX: 100
   sensivityY: 100
   maxAngleY: 75
@@ -1681,6 +1705,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f527f318ae1a536449caf9502b7aecdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
+  gameEnded: 0
+  gameResumed: 0
   rotationSpeed: 2
   oscilationAmplitude: 2
 --- !u!4 &1288961247
@@ -1753,6 +1780,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f527f318ae1a536449caf9502b7aecdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
+  gameEnded: 0
+  gameResumed: 0
   rotationSpeed: 2
   oscilationAmplitude: 2
 --- !u!4 &1417048349
@@ -2008,6 +2038,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f527f318ae1a536449caf9502b7aecdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
+  gameEnded: 0
+  gameResumed: 0
   rotationSpeed: 2
   oscilationAmplitude: 2
 --- !u!4 &1764749312
@@ -2080,6 +2113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f527f318ae1a536449caf9502b7aecdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
+  gameEnded: 0
+  gameResumed: 0
   rotationSpeed: 2
   oscilationAmplitude: 2
 --- !u!4 &1775404885
@@ -2182,6 +2218,46 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1801693251}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1884197952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1884197954}
+  - component: {fileID: 1884197953}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1884197953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884197952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28fc5cd8ff33b014f8e1b82babb68eec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1884197954
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884197952}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.911377, y: 0.54296875, z: 3.217626}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1900832204
 GameObject:
   m_ObjectHideFlags: 0
@@ -2295,6 +2371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb973ab5ea032844a1e9b7d4e4f02f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
+  gameEnded: 0
+  gameResumed: 0
   levels:
   - coinCount: 0
     baseStrength: 1.5
@@ -2375,6 +2454,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f527f318ae1a536449caf9502b7aecdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
+  gameEnded: 0
+  gameResumed: 0
   rotationSpeed: 2
   oscilationAmplitude: 2
 --- !u!4 &2045038384

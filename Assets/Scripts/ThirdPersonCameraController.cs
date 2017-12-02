@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ThirdPersonCameraController : MonoBehaviour
+public class ThirdPersonCameraController : BaseGameObject
 {
 
 	public float sensivityX = 3f;
@@ -98,25 +98,29 @@ public class ThirdPersonCameraController : MonoBehaviour
 
 	void Update ()
 	{
-		float horizontalInput = Time.deltaTime * sensivityX * Input.GetAxis ("Mouse X");
-		float verticalInput = Time.deltaTime * sensivityY * Input.GetAxis ("Mouse Y");
+		if (!gamePaused) {
+			float horizontalInput = Time.deltaTime * sensivityX * Input.GetAxis ("Mouse X");
+			float verticalInput = Time.deltaTime * sensivityY * Input.GetAxis ("Mouse Y");
 
-		currentX += invertX ? -horizontalInput : horizontalInput;
-		currentY += invertY ? verticalInput : -verticalInput;
-		currentY = Mathf.Clamp (currentY, minAngleY, maxAngleY);
+			currentX += invertX ? -horizontalInput : horizontalInput;
+			currentY += invertY ? verticalInput : -verticalInput;
+			currentY = Mathf.Clamp (currentY, minAngleY, maxAngleY);
+		}
 	}
 
 	void LateUpdate ()
 	{
-		this.transform.position = playerRef.transform.position + playerOffset;
-		this.transform.rotation = Quaternion.Euler (currentY, currentX, 0f);
-		lookAtPosition = this.transform.position;
+		if (!gamePaused) {
+			this.transform.position = playerRef.transform.position + playerOffset;
+			this.transform.rotation = Quaternion.Euler (currentY, currentX, 0f);
+			lookAtPosition = this.transform.position;
 
-		ComputeCameraDirection (cam.transform.position);
-		cam.transform.position = CastRayFromPlayer (cam.transform.position);
+			ComputeCameraDirection (cam.transform.position);
+			cam.transform.position = CastRayFromPlayer (cam.transform.position);
 
-		cameraForward = Vector3.ProjectOnPlane (cam.transform.forward, Vector3.up);
-		cameraRight = Vector3.ProjectOnPlane (cam.transform.right, Vector3.up);
+			cameraForward = Vector3.ProjectOnPlane (cam.transform.forward, Vector3.up);
+			cameraRight = Vector3.ProjectOnPlane (cam.transform.right, Vector3.up);
+		}
 	}
 
 	// This method is responsible for avoiding collisions with walls and other objects
@@ -133,5 +137,20 @@ public class ThirdPersonCameraController : MonoBehaviour
 		}
 		ComputeCameraDirection (cameraPosition);
 		return Vector3.SmoothDamp (cameraPosition, lookAtPosition + cameraDirection, ref speed, Time.deltaTime);
+	}
+
+	protected override void OnGamePaused ()
+	{
+		gamePaused = true;
+	}
+
+	protected override void OnGameEnded ()
+	{
+		gameEnded = true;
+	}
+
+	protected override void OnGameResumed ()
+	{
+		gamePaused = false;
 	}
 }

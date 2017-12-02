@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : BaseGameObject
 {
 	public NavMeshAgent navMeshAgent;
 
@@ -43,5 +43,20 @@ public class EnemyController : MonoBehaviour
 	public void Damage ()
 	{
 		SetState (new Dizzy (this));
+	}
+
+	protected override void OnGamePaused ()
+	{
+		gamePaused = true;
+	}
+
+	protected override void OnGameEnded ()
+	{
+		gameEnded = true;
+	}
+
+	protected override void OnGameResumed ()
+	{
+		gamePaused = false;
 	}
 }

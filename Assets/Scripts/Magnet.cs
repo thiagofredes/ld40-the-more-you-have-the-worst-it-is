@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Magnet : MonoBehaviour
+public class Magnet : BaseGameObject
 {
 	[System.Serializable]
 	public class MagnetismLevel
@@ -36,13 +36,15 @@ public class Magnet : MonoBehaviour
 
 	void OnTriggerStay (Collider other)
 	{
-		PlayerController player = other.GetComponent<PlayerController> ();
-		if (active) {
-			if (player != null) {
-				Vector3 direction = other.transform.position - this.transform.position;
-				if (Vector3.Angle (this.transform.forward, direction) <= openingAngle) {
-					SetMagnetismLevel (player.GetNumCoins ());
-					player.Attract (-direction.normalized, levels [currentLevel].baseStrength * (1f - (direction.magnitude / baseDistance)));
+		if (!gamePaused) {
+			PlayerController player = other.GetComponent<PlayerController> ();
+			if (active) {
+				if (player != null) {
+					Vector3 direction = other.transform.position - this.transform.position;
+					if (Vector3.Angle (this.transform.forward, direction) <= openingAngle) {
+						SetMagnetismLevel (player.GetNumCoins ());
+						player.Attract (-direction.normalized, levels [currentLevel].baseStrength * (1f - (direction.magnitude / baseDistance)));
+					}
 				}
 			}
 		}
@@ -50,10 +52,12 @@ public class Magnet : MonoBehaviour
 
 	void OnTriggerExit (Collider other)
 	{
-		PlayerController magnetic = other.GetComponent<PlayerController> ();
-		if (active) {
-			if (magnetic != null) {
-				magnetic.ResetSpeed ();
+		if (!gamePaused) {
+			PlayerController magnetic = other.GetComponent<PlayerController> ();
+			if (active) {
+				if (magnetic != null) {
+					magnetic.ResetSpeed ();
+				}
 			}
 		}
 	}
@@ -66,5 +70,20 @@ public class Magnet : MonoBehaviour
 				currentLevel = l;
 			}
 		}
+	}
+
+	protected override void OnGamePaused ()
+	{
+		gamePaused = true;
+	}
+
+	protected override void OnGameEnded ()
+	{
+		gameEnded = true;
+	}
+
+	protected override void OnGameResumed ()
+	{
+		gamePaused = false;
 	}
 }

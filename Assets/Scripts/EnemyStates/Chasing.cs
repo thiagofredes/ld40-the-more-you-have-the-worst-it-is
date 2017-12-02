@@ -31,11 +31,13 @@ public class Chasing : EnemyState
 
 	public override void Update ()
 	{
-		if (Vector3.Distance (enemy.transform.position, playerRef.transform.position) < 2f) {
-			enemy.StopCoroutine (chaseCoroutine);
-			enemy.navMeshAgent.ResetPath ();
-			enemy.navMeshAgent.velocity = Vector3.zero;
-			enemy.SetState (new Grabbing (this.enemy));
+		if (!enemy.gamePaused) {
+			if (Vector3.Distance (enemy.transform.position, playerRef.transform.position) < 2f) {
+				enemy.StopCoroutine (chaseCoroutine);
+				enemy.navMeshAgent.ResetPath ();
+				enemy.navMeshAgent.velocity = Vector3.zero;
+				enemy.SetState (new Grabbing (this.enemy));
+			}
 		}
 	}
 
@@ -44,19 +46,24 @@ public class Chasing : EnemyState
 		YieldInstruction endOfFrame = new WaitForEndOfFrame ();
 		Vector3 lookVector;
 		while (true) {
-			enemy.navMeshAgent.SetDestination (playerRef.transform.position);
-			enemy.navMeshAgent.updateRotation = false;
-			while (enemy.navMeshAgent.pathPending) {
+			if (!enemy.gamePaused) {
+				enemy.navMeshAgent.SetDestination (playerRef.transform.position);
+				enemy.navMeshAgent.updateRotation = false;
+				while (enemy.navMeshAgent.pathPending) {
+					yield return endOfFrame;
+				}
+				if (enemy.navMeshAgent.desiredVelocity != Vector3.zero) {
+					lookVector = enemy.navMeshAgent.desiredVelocity;
+				} else {
+					lookVector = playerRef.transform.position - enemy.navMeshAgent.transform.position;
+				}
+				lookVector.y = 0f;
+				enemy.transform.rotation = Quaternion.Slerp (enemy.transform.rotation, Quaternion.LookRotation (lookVector), Time.deltaTime * enemy.navMeshAgent.angularSpeed);
+				yield return endOfFrame;
+			} else {
+				enemy.navMeshAgent.ResetPath ();
 				yield return endOfFrame;
 			}
-			if (enemy.navMeshAgent.desiredVelocity != Vector3.zero) {
-				lookVector = enemy.navMeshAgent.desiredVelocity;
-			} else {
-				lookVector = playerRef.transform.position - enemy.navMeshAgent.transform.position;
-			}
-			lookVector.y = 0f;
-			enemy.transform.rotation = Quaternion.Slerp (enemy.transform.rotation, Quaternion.LookRotation (lookVector), Time.deltaTime * enemy.navMeshAgent.angularSpeed);
-			yield return endOfFrame;
 		}	
 	}
 }

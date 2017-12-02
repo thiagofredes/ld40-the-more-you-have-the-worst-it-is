@@ -18,24 +18,26 @@ public class Falling : PlayerState
 
 	public override void Update ()
 	{
-		float horizontal = Input.GetAxis ("Horizontal");
-		float vertical = Input.GetAxis ("Vertical");
-		Vector3 movement = ThirdPersonCameraController.CameraForwardProjectionOnGround * vertical + ThirdPersonCameraController.CameraRightProjectionOnGround * horizontal;
+		if (!player.gamePaused) {
+			float horizontal = Input.GetAxis ("Horizontal");
+			float vertical = Input.GetAxis ("Vertical");
+			Vector3 movement = ThirdPersonCameraController.CameraForwardProjectionOnGround * vertical + ThirdPersonCameraController.CameraRightProjectionOnGround * horizontal;
 
-		fallTime += 5f * Time.deltaTime;
+			fallTime += 5f * Time.deltaTime;
 
-		if (movement.magnitude < 0.1f)
-			player.transform.rotation = Quaternion.LookRotation (player.transform.forward);
-		else
-			player.transform.rotation = Quaternion.LookRotation (movement);
+			if (movement.magnitude < 0.1f)
+				player.transform.rotation = Quaternion.LookRotation (player.transform.forward);
+			else
+				player.transform.rotation = Quaternion.LookRotation (movement);
 
-		if (player.IsOnEnemyHead ()) {
-			player.SetState (new Jumping (this.player));
-		} else if (player.IsGrounded ()) {
-			player.SetState (new Running (this.player));
-		} 
+			if (player.IsOnEnemyHead ()) {
+				player.SetState (new Jumping (this.player));
+			} else if (player.IsGrounded ()) {
+				player.SetState (new Running (this.player));
+			} 
 
-		//player.animator.SetFloat ("Forward", movement.normalized.magnitude);
-		player.characterController.Move (Time.deltaTime * (-Vector3.up * 10f * fallTime + 0.75f * movement * player.UnscaledMovementSpeed));
+			//player.animator.SetFloat ("Forward", movement.normalized.magnitude);
+			player.characterController.Move (Time.deltaTime * (-Vector3.up * 10f * fallTime + 0.75f * movement * player.UnscaledMovementSpeed));
+		}
 	}
 }

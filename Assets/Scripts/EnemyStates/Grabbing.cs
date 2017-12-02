@@ -17,12 +17,14 @@ public class Grabbing : EnemyState
 
 	public override void Update ()
 	{
-		if (Vector3.Distance (this.enemy.transform.position, playerRef.transform.position) > 3f) {
-			enemy.SetState (new Chasing (this.enemy));
-		} else {
-			grabTime -= Time.deltaTime;
-			if (grabTime <= 0f) {
-				Debug.Log ("GAME OVER");
+		if (!enemy.gamePaused) {
+			if (Vector3.Distance (this.enemy.transform.position, playerRef.transform.position) > 3f) {
+				enemy.SetState (new Chasing (this.enemy));
+			} else {
+				grabTime -= Time.deltaTime;
+				if (grabTime <= 0f) {
+					Debug.Log ("GAME OVER");
+				}
 			}
 		}
 	}

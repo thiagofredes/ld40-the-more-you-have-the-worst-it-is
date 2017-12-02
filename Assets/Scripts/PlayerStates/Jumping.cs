@@ -31,26 +31,28 @@ public class Jumping : PlayerState
 
 	public override void Update ()
 	{
-		float horizontal = Input.GetAxis ("Horizontal");
-		float vertical = Input.GetAxis ("Vertical");
-		Vector3 movement = ThirdPersonCameraController.CameraForwardProjectionOnGround * vertical + ThirdPersonCameraController.CameraRightProjectionOnGround * horizontal;
+		if (!player.gamePaused) {
+			float horizontal = Input.GetAxis ("Horizontal");
+			float vertical = Input.GetAxis ("Vertical");
+			Vector3 movement = ThirdPersonCameraController.CameraForwardProjectionOnGround * vertical + ThirdPersonCameraController.CameraRightProjectionOnGround * horizontal;
 
-		if (Input.GetKeyUp (KeyCode.Space)) {
-			boostingJump = false;
-		}
-
-		if (!boostingJump)
-			upTime -= Time.deltaTime;
-		else {
-			boostTime -= Time.deltaTime;
-			if (boostTime <= 0f) {
+			if (Input.GetKeyUp (KeyCode.Space)) {
 				boostingJump = false;
 			}
-		}
+
+			if (!boostingJump)
+				upTime -= Time.deltaTime;
+			else {
+				boostTime -= Time.deltaTime;
+				if (boostTime <= 0f) {
+					boostingJump = false;
+				}
+			}
 		
-		if (upTime <= 0f)
-			player.SetState (new Falling (this.player));
-		else
-			player.characterController.Move (Time.deltaTime * (Vector3.up * 1.25f * player.movementSpeed * (upTime / totalUpTime) + 0.75f * movement * player.movementSpeed));
+			if (upTime <= 0f)
+				player.SetState (new Falling (this.player));
+			else
+				player.characterController.Move (Time.deltaTime * (Vector3.up * 1.25f * player.movementSpeed * (upTime / totalUpTime) + 0.75f * movement * player.movementSpeed));
+		}
 	}
 }

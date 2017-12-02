@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : BaseGameObject
 {
 	public CharacterController characterController;
 
@@ -92,5 +92,20 @@ public class PlayerController : MonoBehaviour
 	public void AddCoin ()
 	{
 		numCoins++;
+	}
+
+	protected override void OnGamePaused ()
+	{
+		gamePaused = true;
+	}
+
+	protected override void OnGameEnded ()
+	{
+		gameEnded = true;
+	}
+
+	protected override void OnGameResumed ()
+	{
+		gamePaused = false;
 	}
 }

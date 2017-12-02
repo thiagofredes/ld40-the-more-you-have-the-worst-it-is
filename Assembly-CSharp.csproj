@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BaseGameObject.cs" />
      <Compile Include="Assets\Scripts\Coin.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\EnemyStates\Chasing.cs" />
@@ -59,6 +60,7 @@
      <Compile Include="Assets\Scripts\EnemyStates\Grabbing.cs" />
      <Compile Include="Assets\Scripts\EnemyStates\Patrolling.cs" />
      <Compile Include="Assets\Scripts\EnemyStates\PatrolPointsController.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Magnet.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerStates\Falling.cs" />
