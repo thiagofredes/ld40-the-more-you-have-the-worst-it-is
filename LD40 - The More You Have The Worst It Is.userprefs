@@ -1,13 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerStates\Running.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyStates\Patrolling.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="9" Column="2" />
-      <File FileName="Assets\Scripts\ThirdPersonCameraController.cs" Line="28" Column="27" />
-      <File FileName="Assets\Scripts\PlayerStates\Falling.cs" Line="9" Column="16" />
-      <File FileName="Assets\Scripts\PlayerStates\Jumping.cs" Line="10" Column="16" />
-      <File FileName="Assets\Scripts\PlayerStates\Running.cs" Line="19" Column="47" />
-      <File FileName="Assets\Scripts\PlayerStates\PlayerState.cs" Line="17" Column="2" />
+      <File FileName="Assets\Scripts\EnemyController.cs" Line="26" Column="32" />
+      <File FileName="Assets\Scripts\EnemyStates\Chasing.cs" Line="7" Column="16" />
+      <File FileName="Assets\Scripts\EnemyStates\Patrolling.cs" Line="31" Column="3" />
+      <File FileName="Assets\Scripts\EnemyStates\EnemyState.cs" Line="8" Column="12" />
+      <File FileName="Assets\Scripts\EnemyStates\PatrolPointsController.cs" Line="22" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
