@@ -10,7 +10,6 @@ public class Grabbing : EnemyState
 
 	public Grabbing (EnemyController enemy)
 	{
-		Debug.Log ("Grabbing");
 		this.enemy = enemy;
 		playerRef = GameObject.FindGameObjectWithTag ("Player");
 		grabTime = 2f;

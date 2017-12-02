@@ -29,9 +29,11 @@ public class Falling : PlayerState
 		else
 			player.transform.rotation = Quaternion.LookRotation (movement);
 
-		if (player.IsGrounded ()) {
+		if (player.IsOnEnemyHead ()) {
+			player.SetState (new Jumping (this.player));
+		} else if (player.IsGrounded ()) {
 			player.SetState (new Running (this.player));
-		}
+		} 
 
 		//player.animator.SetFloat ("Forward", movement.normalized.magnitude);
 		player.characterController.Move (Time.deltaTime * (-Vector3.up * 9.8f * fallTime + 0.75f * movement * player.UnscaledMovementSpeed));

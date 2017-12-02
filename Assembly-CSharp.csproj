@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\EnemyStates\Chasing.cs" />
+     <Compile Include="Assets\Scripts\EnemyStates\Dizzy.cs" />
      <Compile Include="Assets\Scripts\EnemyStates\EnemyState.cs" />
      <Compile Include="Assets\Scripts\EnemyStates\Grabbing.cs" />
      <Compile Include="Assets\Scripts\EnemyStates\Patrolling.cs" />

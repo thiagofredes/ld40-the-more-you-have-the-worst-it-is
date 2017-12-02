@@ -53,6 +53,24 @@ public class PlayerController : MonoBehaviour
 		return false;
 	}
 
+	public bool IsOnEnemyHead ()
+	{
+		RaycastHit enemyHit;
+		Vector3 rayOrigin = this.transform.position;
+		float raycastDistance = this.characterController.height * 0.5f;
+		float sphereRadius = this.characterController.radius;
+
+		if (Physics.SphereCast (rayOrigin, sphereRadius, -Vector3.up, out enemyHit, raycastDistance, LayerMask.GetMask ("Enemies"))) {
+			this.characterController.Move (-Vector3.up * (sphereRadius + this.characterController.skinWidth));
+			EnemyController enemyController = enemyHit.collider.gameObject.GetComponent<EnemyController> ();
+			enemyController.Damage ();
+			return true;
+		}
+
+		return false;
+	}
+
+
 	public void Attract (Vector3 direction, float strength)
 	{
 		this.movementSpeed = originalMovementSpeed - strength;

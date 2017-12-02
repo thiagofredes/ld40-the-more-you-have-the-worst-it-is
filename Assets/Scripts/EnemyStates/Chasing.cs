@@ -10,11 +10,10 @@ public class Chasing : EnemyState
 
 	public Chasing (EnemyController enemy)
 	{
-		Debug.Log ("Chasing");
 		this.enemy = enemy;
 		this.enemy.magnet.active = true;
 		playerRef = GameObject.FindGameObjectWithTag ("Player");
-		enemy.navMeshAgent.stoppingDistance = 1.5f;
+		enemy.navMeshAgent.stoppingDistance = 2f;
 		chaseCoroutine = this.enemy.StartCoroutine (Chase ());
 	}
 
@@ -25,12 +24,14 @@ public class Chasing : EnemyState
 
 	public override void OnExit ()
 	{
-		base.OnExit ();
+		enemy.StopCoroutine (chaseCoroutine);
+		enemy.navMeshAgent.ResetPath ();
+		enemy.navMeshAgent.velocity = Vector3.zero;
 	}
 
 	public override void Update ()
 	{
-		if (Vector3.Distance (enemy.transform.position, playerRef.transform.position) < 3f) {
+		if (Vector3.Distance (enemy.transform.position, playerRef.transform.position) < 2f) {
 			enemy.StopCoroutine (chaseCoroutine);
 			enemy.navMeshAgent.ResetPath ();
 			enemy.navMeshAgent.velocity = Vector3.zero;

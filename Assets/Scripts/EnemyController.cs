@@ -39,4 +39,9 @@ public class EnemyController : MonoBehaviour
 			SetState (new Chasing (this));
 		}
 	}
+
+	public void Damage ()
+	{
+		SetState (new Dizzy (this));
+	}
 }
