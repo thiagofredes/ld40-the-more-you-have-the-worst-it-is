@@ -20,7 +20,7 @@ public class Jumping : PlayerState
 
 	public override void OnEnter ()
 	{
-		upTime = 1f;
+		upTime = 0.9f;
 		totalUpTime = upTime;
 		boostTime = 0.5f;
 		if (Input.GetKey (KeyCode.Space)) {
@@ -51,6 +51,6 @@ public class Jumping : PlayerState
 		if (upTime <= 0f)
 			player.SetState (new Falling (this.player));
 		else
-			player.characterController.Move (Time.deltaTime * (Vector3.up * player.movementSpeed * (upTime / totalUpTime) + 0.75f * movement * player.movementSpeed));
+			player.characterController.Move (Time.deltaTime * (Vector3.up * 1.25f * player.movementSpeed * (upTime / totalUpTime) + 0.75f * movement * player.movementSpeed));
 	}
 }

@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 
 	public float movementSpeed = 5f;
 
+	public string[] layersToIgnoreWhenFalling;
+
 	private int numCoins;
 
 	public float UnscaledMovementSpeed {
@@ -45,7 +47,7 @@ public class PlayerController : MonoBehaviour
 		float raycastDistance = this.characterController.height * 0.5f;
 		float sphereRadius = this.characterController.radius;
 
-		if (Physics.SphereCast (rayOrigin, sphereRadius, -Vector3.up, out groundHit, raycastDistance, ~LayerMask.GetMask ("Player", "Magnets", "EnemiesListeningRadius"))) {
+		if (Physics.SphereCast (rayOrigin, sphereRadius, -Vector3.up, out groundHit, raycastDistance, ~LayerMask.GetMask (layersToIgnoreWhenFalling))) {
 			this.characterController.Move (-Vector3.up * (sphereRadius + this.characterController.skinWidth));
 			return true;
 		}
@@ -85,5 +87,10 @@ public class PlayerController : MonoBehaviour
 	public int GetNumCoins ()
 	{
 		return numCoins;
+	}
+
+	public void AddCoin ()
+	{
+		numCoins++;
 	}
 }
