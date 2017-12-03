@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Grabbing : EnemyState
 {
-	float grabTime = 2f;
+	float grabTime = 3f;
 
-	GameObject playerRef;
+	PlayerController playerRef;
 
 	public Grabbing (EnemyController enemy)
 	{
 		this.enemy = enemy;
-		playerRef = GameObject.FindGameObjectWithTag ("Player");
-		grabTime = 2f;
+		playerRef = GameObject.FindObjectOfType<PlayerController> ();
+		grabTime = 3f;
+		playerRef.StartGrab ();
 	}
 
 	public override void Update ()
@@ -20,6 +21,7 @@ public class Grabbing : EnemyState
 		if (!enemy.gamePaused) {
 			if (Vector3.Distance (this.enemy.transform.position, playerRef.transform.position) > 3f) {
 				enemy.SetState (new Chasing (this.enemy));
+				playerRef.EndGrab ();
 			} else {
 				grabTime -= Time.deltaTime;
 				if (grabTime <= 0f) {

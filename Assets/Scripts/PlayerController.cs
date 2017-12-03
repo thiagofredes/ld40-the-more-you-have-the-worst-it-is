@@ -13,6 +13,8 @@ public class PlayerController : BaseGameObject
 
 	private int numCoins;
 
+	public GrabCanvasController grabCanvas;
+
 	public float UnscaledMovementSpeed {
 		get { return this.originalMovementSpeed; }
 	}
@@ -92,6 +94,17 @@ public class PlayerController : BaseGameObject
 	public void AddCoin ()
 	{
 		numCoins++;
+		GameUIManager.SetCoinText (numCoins);
+	}
+
+	public void StartGrab ()
+	{
+		grabCanvas.ShowCanvas ();
+	}
+
+	public void EndGrab ()
+	{
+		grabCanvas.HideCanvas ();
 	}
 
 	protected override void OnGamePaused ()

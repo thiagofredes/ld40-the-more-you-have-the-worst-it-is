@@ -68,6 +68,10 @@
      <Compile Include="Assets\Scripts\PlayerStates\PlayerState.cs" />
      <Compile Include="Assets\Scripts\PlayerStates\Running.cs" />
      <Compile Include="Assets\Scripts\ThirdPersonCameraController.cs" />
+     <Compile Include="Assets\Scripts\UI\GameUIManager.cs" />
+     <Compile Include="Assets\Scripts\UI\GrabCanvasController.cs" />
+     <Compile Include="Assets\Scripts\UI\LookAtCamera.cs" />
+     <Compile Include="Assets\Scripts\UI\SpinImage.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity 2017.2.0f3/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

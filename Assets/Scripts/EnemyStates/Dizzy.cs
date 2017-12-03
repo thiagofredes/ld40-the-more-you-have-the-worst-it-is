@@ -7,9 +7,13 @@ public class Dizzy : EnemyState
 
 	float dizzyTime = 2f;
 
+	PlayerController playerRef;
+
 	public Dizzy (EnemyController enemy)
 	{
 		this.enemy = enemy;
+		playerRef = GameObject.FindObjectOfType<PlayerController> ();
+		playerRef.EndGrab ();
 	}
 
 	public override void Update ()
