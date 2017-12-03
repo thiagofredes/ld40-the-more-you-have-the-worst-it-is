@@ -19,14 +19,14 @@ public class Grabbing : EnemyState
 
 	public override void Update ()
 	{
-		if (!enemy.gamePaused) {
+		if (!enemy.gamePaused && !enemy.gameEnded) {
 			if (Vector3.Distance (this.enemy.transform.position, playerRef.transform.position) > 7f) {
 				enemy.SetState (new Chasing (this.enemy));
 				playerRef.EndGrab ();
 			} else {
 				grabTime -= Time.deltaTime;
 				if (grabTime <= 0f) {
-					Debug.Log ("GAME OVER");
+					GameManager.EndGame (false);
 				}
 			}
 		}

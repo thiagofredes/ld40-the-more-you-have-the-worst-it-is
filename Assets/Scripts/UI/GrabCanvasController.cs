@@ -13,7 +13,11 @@ public class GrabCanvasController : MonoBehaviour
 
 	public Text grabTimeTextDecimal;
 
+	public Image grabImage;
+
 	public float grabTime = 3f;
+
+	private float originalGrabTime = 3f;
 
 	private Coroutine canvasCoroutine;
 
@@ -52,7 +56,8 @@ public class GrabCanvasController : MonoBehaviour
 			integerPart = (int)Math.Truncate (grabTime);
 			decimalPart = System.Convert.ToInt16 ((grabTime - integerPart) * 100);
 			grabTimeTextInteger.text = integerPart.ToString ("###");
-			grabTimeTextDecimal.text = decimalPart.ToString ("##");			
+			grabTimeTextDecimal.text = decimalPart.ToString ("##");	
+			grabImage.fillAmount = grabTime / originalGrabTime;
 			yield return new WaitForEndOfFrame ();
 		}
 	}

@@ -36,7 +36,7 @@ public class Chasing : EnemyState
 
 	public override void Update ()
 	{
-		if (!enemy.gamePaused) {
+		if (!enemy.gamePaused && !enemy.gameEnded) {
 			if (Vector3.Distance (enemy.transform.position, playerRef.transform.position) < 5f) {
 				enemy.StopCoroutine (chaseCoroutine);
 				enemy.navMeshAgent.ResetPath ();
@@ -51,7 +51,7 @@ public class Chasing : EnemyState
 		YieldInstruction endOfFrame = new WaitForEndOfFrame ();
 		Vector3 lookVector;
 		while (true) {
-			if (!enemy.gamePaused) {
+			if (!enemy.gamePaused && !enemy.gameEnded) {
 				enemy.navMeshAgent.SetDestination (playerRef.transform.position);
 				enemy.navMeshAgent.updateRotation = false;
 				while (enemy.navMeshAgent.pathPending) {

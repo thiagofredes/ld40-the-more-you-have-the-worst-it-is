@@ -98,7 +98,7 @@ public class ThirdPersonCameraController : BaseGameObject
 
 	void Update ()
 	{
-		if (!gamePaused) {
+		if (!gamePaused && !gamePaused) {
 			float horizontalInput = Time.deltaTime * sensivityX * Input.GetAxis ("Mouse X");
 			float verticalInput = Time.deltaTime * sensivityY * Input.GetAxis ("Mouse Y");
 
@@ -110,7 +110,7 @@ public class ThirdPersonCameraController : BaseGameObject
 
 	void LateUpdate ()
 	{
-		if (!gamePaused) {
+		if (!gamePaused && !gameEnded) {
 			this.transform.position = playerRef.transform.position + playerOffset;
 			this.transform.rotation = Quaternion.Euler (currentY, currentX, 0f);
 			lookAtPosition = this.transform.position;
@@ -144,7 +144,7 @@ public class ThirdPersonCameraController : BaseGameObject
 		gamePaused = true;
 	}
 
-	protected override void OnGameEnded ()
+	protected override void OnGameEnded (bool success)
 	{
 		gameEnded = true;
 	}

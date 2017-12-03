@@ -36,13 +36,14 @@ public class Patrolling : EnemyState
 	{
 		YieldInstruction endOfFrame = new WaitForEndOfFrame ();
 		while (true) {
-			if (!enemy.gamePaused) {
+			if (!enemy.gamePaused && !enemy.gameEnded) {
 				enemy.navMeshAgent.SetDestination (PatrolPointsController.GetPointFor (enemy.number, currentPatrolPoint).position);
 				while (enemy.navMeshAgent.pathPending) {
 					yield return endOfFrame;
 				}
+				//Debug.Log (Vector3.Distance (enemy.navMeshAgent.transform.position, PatrolPointsController.GetPointFor (enemy.number, currentPatrolPoint).position));
 				while (Vector3.Distance (enemy.navMeshAgent.transform.position, PatrolPointsController.GetPointFor (enemy.number, currentPatrolPoint).position) > 0.5f) {
-					if (!enemy.gamePaused) {
+					if (!enemy.gamePaused && !enemy.gameEnded) {
 						yield return endOfFrame;
 					} else {
 						enemy.navMeshAgent.ResetPath ();
@@ -50,7 +51,7 @@ public class Patrolling : EnemyState
 						break;
 					}
 				}
-				if (enemy.gamePaused) {
+				if (enemy.gamePaused && !enemy.gameEnded) {
 					continue;
 				} else {
 					currentPatrolPoint = (currentPatrolPoint + 1) % PatrolPointsController.GetNumPointsFor (enemy.number);

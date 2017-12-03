@@ -38,7 +38,7 @@ public class Magnet : BaseGameObject
 
 	void OnTriggerStay (Collider other)
 	{
-		if (!gamePaused) {
+		if (!gamePaused && !gameEnded) {
 			PlayerController player = other.GetComponent<PlayerController> ();
 			if (active) {
 				if (player != null) {
@@ -54,7 +54,7 @@ public class Magnet : BaseGameObject
 
 	void OnTriggerExit (Collider other)
 	{
-		if (!gamePaused) {
+		if (!gamePaused && !gameEnded) {
 			PlayerController magnetic = other.GetComponent<PlayerController> ();
 			if (active) {
 				if (magnetic != null) {
@@ -79,7 +79,7 @@ public class Magnet : BaseGameObject
 		gamePaused = true;
 	}
 
-	protected override void OnGameEnded ()
+	protected override void OnGameEnded (bool success)
 	{
 		gameEnded = true;
 	}

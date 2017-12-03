@@ -31,7 +31,7 @@ public class BaseGameObject : MonoBehaviour
 	{		
 	}
 
-	protected virtual void OnGameEnded ()
+	protected virtual void OnGameEnded (bool success)
 	{
 
 	}

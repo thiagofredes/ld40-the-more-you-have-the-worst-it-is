@@ -22,7 +22,7 @@ public class Dizzy : EnemyState
 
 	public override void Update ()
 	{
-		if (!enemy.gamePaused) {
+		if (!enemy.gamePaused && !enemy.gameEnded) {
 			dizzyTime -= Time.deltaTime;
 			if (dizzyTime <= 0f) {
 				enemy.SetState (new Chasing (this.enemy));

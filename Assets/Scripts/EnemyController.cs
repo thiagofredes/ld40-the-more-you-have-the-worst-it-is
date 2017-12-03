@@ -48,16 +48,19 @@ public class EnemyController : BaseGameObject
 
 	protected override void OnGamePaused ()
 	{
+		animator.speed = 0f;
 		gamePaused = true;
 	}
 
-	protected override void OnGameEnded ()
+	protected override void OnGameEnded (bool success)
 	{
+		animator.speed = 0f;
 		gameEnded = true;
 	}
 
 	protected override void OnGameResumed ()
 	{
+		animator.speed = 1f;
 		gamePaused = false;
 	}
 }

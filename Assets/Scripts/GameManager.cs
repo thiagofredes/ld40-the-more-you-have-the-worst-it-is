@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using NUnit.Framework;
+using UnityEngine.SceneManagement;
 
 
 
 public class GameManager : MonoBehaviour
 {
-	private bool paused = false;
+	private static bool paused = false;
+
+	private static bool gameOver = false;
 
 	public static event Action GamePaused;
 
-	public static event Action GameEnded;
+	public static event Action<bool> GameEnded;
 
 	public static event Action GameResumed;
 
@@ -27,21 +31,28 @@ public class GameManager : MonoBehaviour
 			GameResumed ();
 	}
 
-	public static void EndGame ()
+	public static void EndGame (bool success)
 	{
 		if (GameEnded != null)
-			GameEnded ();
+			GameEnded (success);
+		gameOver = !success;
 	}
 
 	void Update ()
 	{
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			if (!paused) {
-				Pause ();
-			} else {
-				Resume ();
+		if (!gameOver) {
+			if (Input.GetKeyDown (KeyCode.Escape)) {
+				if (!paused) {
+					Pause ();
+				} else {
+					Resume ();
+				}
+				paused = !paused;
 			}
-			paused = !paused;
+		} else {
+			if (Input.GetKeyDown (KeyCode.R)) {
+				SceneManager.LoadSceneAsync ("Phase1");
+			}
 		}
 	}
 }

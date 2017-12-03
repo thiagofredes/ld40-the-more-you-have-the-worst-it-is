@@ -23,7 +23,7 @@ public class Coin : BaseGameObject
 
 	void Update ()
 	{
-		if (!gamePaused) {
+		if (!gamePaused && !gameEnded) {
 			t = (t + 6f * Time.deltaTime) % (2f * Mathf.PI);
 			this.transform.position += Vector3.up * oscilationAmplitude * Mathf.Sin (t) * Time.deltaTime;
 			this.transform.Rotate (0f, rotationSpeed, 0f, Space.World);
@@ -57,7 +57,7 @@ public class Coin : BaseGameObject
 		gamePaused = true;
 	}
 
-	protected override void OnGameEnded ()
+	protected override void OnGameEnded (bool success)
 	{
 		gameEnded = true;
 	}

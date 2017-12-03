@@ -8,7 +8,7 @@ public class SpinImage : BaseGameObject
 	// Update is called once per frame
 	void Update ()
 	{
-		if (!gamePaused) {
+		if (!gamePaused && !gameEnded) {
 			this.transform.Rotate (0f, 10f * Time.deltaTime, 0f);
 		}			
 	}
@@ -18,7 +18,7 @@ public class SpinImage : BaseGameObject
 		gamePaused = true;
 	}
 
-	protected override void OnGameEnded ()
+	protected override void OnGameEnded (bool success)
 	{
 		gameEnded = true;
 	}

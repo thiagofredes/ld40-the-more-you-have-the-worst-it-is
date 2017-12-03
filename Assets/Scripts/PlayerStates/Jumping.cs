@@ -33,7 +33,7 @@ public class Jumping : PlayerState
 
 	public override void Update ()
 	{
-		if (!player.gamePaused) {
+		if (!player.gamePaused && !player.gameEnded) {
 			float horizontal = Input.GetAxis ("Horizontal");
 			float vertical = Input.GetAxis ("Vertical");
 			Vector3 movement = ThirdPersonCameraController.CameraForwardProjectionOnGround * vertical + ThirdPersonCameraController.CameraRightProjectionOnGround * horizontal;

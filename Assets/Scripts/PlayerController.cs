@@ -116,15 +116,18 @@ public class PlayerController : BaseGameObject
 	protected override void OnGamePaused ()
 	{
 		gamePaused = true;
+		animator.speed = 0f;
 	}
 
-	protected override void OnGameEnded ()
+	protected override void OnGameEnded (bool success)
 	{
 		gameEnded = true;
+		animator.speed = 0f;
 	}
 
 	protected override void OnGameResumed ()
 	{
 		gamePaused = false;
+		animator.speed = 1f;
 	}
 }
