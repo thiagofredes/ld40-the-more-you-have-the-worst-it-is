@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dizzy : EnemyState
 {
 
-	float dizzyTime = 2f;
+	float dizzyTime = 3f;
 
 	PlayerController playerRef;
 
@@ -14,6 +14,7 @@ public class Dizzy : EnemyState
 		this.enemy = enemy;
 		playerRef = GameObject.FindObjectOfType<PlayerController> ();
 		playerRef.EndGrab ();
+		enemy.animator.SetTrigger ("dizzy");
 	}
 
 	public override void Update ()

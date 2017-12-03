@@ -9,6 +9,7 @@ public class Falling : PlayerState
 	public Falling (PlayerController player)
 	{
 		this.player = player;
+		player.animator.SetTrigger ("fall");
 	}
 
 	public override void OnEnter ()
@@ -33,10 +34,10 @@ public class Falling : PlayerState
 			if (player.IsOnEnemyHead ()) {
 				player.SetState (new Jumping (this.player));
 			} else if (player.IsGrounded ()) {
+				player.animator.SetTrigger ("onground");
 				player.SetState (new Running (this.player));
 			} 
-
-			//player.animator.SetFloat ("Forward", movement.normalized.magnitude);
+				
 			player.characterController.Move (Time.deltaTime * (-Vector3.up * 10f * fallTime + 0.75f * movement * player.UnscaledMovementSpeed));
 		}
 	}

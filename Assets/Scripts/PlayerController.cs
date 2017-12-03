@@ -15,6 +15,8 @@ public class PlayerController : BaseGameObject
 
 	public GrabCanvasController grabCanvas;
 
+	public Animator animator;
+
 	public float UnscaledMovementSpeed {
 		get { return this.originalMovementSpeed; }
 	}
@@ -45,23 +47,25 @@ public class PlayerController : BaseGameObject
 	public bool IsGrounded ()
 	{
 		RaycastHit groundHit;
-		Vector3 rayOrigin = this.transform.position;
-		float raycastDistance = this.characterController.height * 0.5f;
+		Vector3 rayOrigin = this.transform.position + characterController.center;
+		float raycastDistance = this.characterController.height * 0.5f + characterController.skinWidth;
 		float sphereRadius = this.characterController.radius;
 
 		if (Physics.SphereCast (rayOrigin, sphereRadius, -Vector3.up, out groundHit, raycastDistance, ~LayerMask.GetMask (layersToIgnoreWhenFalling))) {
 			this.characterController.Move (-Vector3.up * (sphereRadius + this.characterController.skinWidth));
+			Debug.Log ("grounded");
 			return true;
 		}
 
+		Debug.Log ("not grounded");
 		return false;
 	}
 
 	public bool IsOnEnemyHead ()
 	{
 		RaycastHit enemyHit;
-		Vector3 rayOrigin = this.transform.position;
-		float raycastDistance = this.characterController.height * 0.5f;
+		Vector3 rayOrigin = this.transform.position + characterController.center;
+		float raycastDistance = this.characterController.height * 0.5f + characterController.skinWidth;
 		float sphereRadius = this.characterController.radius;
 
 		if (Physics.SphereCast (rayOrigin, sphereRadius, -Vector3.up, out enemyHit, raycastDistance, LayerMask.GetMask ("Enemies"))) {

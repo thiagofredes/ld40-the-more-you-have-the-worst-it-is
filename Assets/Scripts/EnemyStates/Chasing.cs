@@ -15,6 +15,7 @@ public class Chasing : EnemyState
 		playerRef = GameObject.FindGameObjectWithTag ("Player");
 		enemy.navMeshAgent.stoppingDistance = 2f;
 		chaseCoroutine = this.enemy.StartCoroutine (Chase ());
+		enemy.animator.SetTrigger ("chase");
 	}
 
 	public override void OnEnter ()
@@ -32,7 +33,7 @@ public class Chasing : EnemyState
 	public override void Update ()
 	{
 		if (!enemy.gamePaused) {
-			if (Vector3.Distance (enemy.transform.position, playerRef.transform.position) < 2f) {
+			if (Vector3.Distance (enemy.transform.position, playerRef.transform.position) < 3f) {
 				enemy.StopCoroutine (chaseCoroutine);
 				enemy.navMeshAgent.ResetPath ();
 				enemy.navMeshAgent.velocity = Vector3.zero;

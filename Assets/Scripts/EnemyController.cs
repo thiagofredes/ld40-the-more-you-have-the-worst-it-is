@@ -13,6 +13,8 @@ public class EnemyController : BaseGameObject
 
 	public int number;
 
+	public Animator animator;
+
 	private EnemyState currentState;
 
 	void Start ()

@@ -50,9 +50,11 @@ public class Patrolling : EnemyState
 						break;
 					}
 				}
-				if (enemy.gamePaused)
+				if (enemy.gamePaused) {
 					continue;
-				currentPatrolPoint = (currentPatrolPoint + 1) % PatrolPointsController.GetNumPointsFor (enemy.number);
+				} else {
+					currentPatrolPoint = (currentPatrolPoint + 1) % PatrolPointsController.GetNumPointsFor (enemy.number);
+				}
 			} else {
 				enemy.navMeshAgent.ResetPath ();
 				enemy.navMeshAgent.velocity = Vector3.zero;

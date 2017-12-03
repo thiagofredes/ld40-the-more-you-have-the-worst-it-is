@@ -23,6 +23,7 @@ public class Jumping : PlayerState
 		upTime = 0.9f;
 		totalUpTime = upTime;
 		boostTime = 0.5f;
+		player.animator.SetTrigger ("jump");
 		if (Input.GetKey (KeyCode.Space)) {
 			boostTime -= Time.deltaTime;
 			boostingJump = true;
@@ -49,10 +50,11 @@ public class Jumping : PlayerState
 				}
 			}
 		
-			if (upTime <= 0f)
+			if (upTime <= 0f) {
 				player.SetState (new Falling (this.player));
-			else
+			} else {
 				player.characterController.Move (Time.deltaTime * (Vector3.up * 1.25f * player.movementSpeed * (upTime / totalUpTime) + 0.75f * movement * player.movementSpeed));
+			}
 		}
 	}
 }
