@@ -10,12 +10,16 @@ public class Chasing : EnemyState
 
 	public Chasing (EnemyController enemy)
 	{
+		//Debug.Log ("Chasing");
 		this.enemy = enemy;
 		this.enemy.magnet.active = true;
+		this.enemy.allowChaseByListening = false;
 		playerRef = GameObject.FindGameObjectWithTag ("Player");
-		enemy.navMeshAgent.stoppingDistance = 2f;
+		enemy.navMeshAgent.stoppingDistance = 5f;
 		chaseCoroutine = this.enemy.StartCoroutine (Chase ());
 		enemy.animator.SetTrigger ("chase");
+		if (!enemy.magnet.audioSource.isPlaying)
+			enemy.magnet.audioSource.Play ();
 	}
 
 	public override void OnEnter ()
@@ -33,7 +37,7 @@ public class Chasing : EnemyState
 	public override void Update ()
 	{
 		if (!enemy.gamePaused) {
-			if (Vector3.Distance (enemy.transform.position, playerRef.transform.position) < 3f) {
+			if (Vector3.Distance (enemy.transform.position, playerRef.transform.position) < 5f) {
 				enemy.StopCoroutine (chaseCoroutine);
 				enemy.navMeshAgent.ResetPath ();
 				enemy.navMeshAgent.velocity = Vector3.zero;

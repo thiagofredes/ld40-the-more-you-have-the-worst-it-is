@@ -51,9 +51,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AnimationEventListener.cs" />
      <Compile Include="Assets\Scripts\BaseGameObject.cs" />
      <Compile Include="Assets\Scripts\Coin.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
+     <Compile Include="Assets\Scripts\EnemyListeningArea.cs" />
      <Compile Include="Assets\Scripts\EnemyStates\Chasing.cs" />
      <Compile Include="Assets\Scripts\EnemyStates\Dizzy.cs" />
      <Compile Include="Assets\Scripts\EnemyStates\EnemyState.cs" />

@@ -11,9 +11,12 @@ public class Dizzy : EnemyState
 
 	public Dizzy (EnemyController enemy)
 	{
+		//Debug.Log ("Dizzy");
 		this.enemy = enemy;
+		dizzyTime = 3f;
 		playerRef = GameObject.FindObjectOfType<PlayerController> ();
 		playerRef.EndGrab ();
+		enemy.audioSource.Play ();
 		enemy.animator.SetTrigger ("dizzy");
 	}
 
@@ -21,7 +24,7 @@ public class Dizzy : EnemyState
 	{
 		if (!enemy.gamePaused) {
 			dizzyTime -= Time.deltaTime;
-			if (dizzyTime <= -0f) {
+			if (dizzyTime <= 0f) {
 				enemy.SetState (new Chasing (this.enemy));
 			}
 		}
@@ -29,7 +32,7 @@ public class Dizzy : EnemyState
 
 	public override void OnEnter ()
 	{
-		base.OnEnter ();
+		dizzyTime = 3f;
 	}
 
 	public override void OnExit ()

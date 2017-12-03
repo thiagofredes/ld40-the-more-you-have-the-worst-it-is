@@ -15,10 +15,17 @@ public class EnemyController : BaseGameObject
 
 	public Animator animator;
 
+	public AudioSource audioSource;
+
+	[HideInInspector]
+	public bool allowChaseByListening;
+
 	private EnemyState currentState;
+
 
 	void Start ()
 	{
+		allowChaseByListening = true;
 		this.currentState = new Patrolling (this);
 	}
 
@@ -32,14 +39,6 @@ public class EnemyController : BaseGameObject
 		this.currentState.OnExit ();
 		this.currentState = newState;
 		this.currentState.OnEnter ();
-	}
-
-	void OnTriggerEnter (Collider other)
-	{
-		PlayerController player = other.GetComponent<PlayerController> ();
-		if (player != null) {
-			SetState (new Chasing (this));
-		}
 	}
 
 	public void Damage ()

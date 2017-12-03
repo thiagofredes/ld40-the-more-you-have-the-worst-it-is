@@ -17,6 +17,10 @@ public class PlayerController : BaseGameObject
 
 	public Animator animator;
 
+	public AudioSource audioSource;
+
+	public AudioClip jump;
+
 	public float UnscaledMovementSpeed {
 		get { return this.originalMovementSpeed; }
 	}
@@ -53,11 +57,9 @@ public class PlayerController : BaseGameObject
 
 		if (Physics.SphereCast (rayOrigin, sphereRadius, -Vector3.up, out groundHit, raycastDistance, ~LayerMask.GetMask (layersToIgnoreWhenFalling))) {
 			this.characterController.Move (-Vector3.up * (sphereRadius + this.characterController.skinWidth));
-			Debug.Log ("grounded");
 			return true;
 		}
-
-		Debug.Log ("not grounded");
+			
 		return false;
 	}
 

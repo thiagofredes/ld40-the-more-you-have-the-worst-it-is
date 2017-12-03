@@ -19,6 +19,8 @@ public class Magnet : BaseGameObject
 
 	public bool active;
 
+	public AudioSource audioSource;
+
 	private int currentLevel;
 
 	private int numLevels;

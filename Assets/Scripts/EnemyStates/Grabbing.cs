@@ -10,6 +10,7 @@ public class Grabbing : EnemyState
 
 	public Grabbing (EnemyController enemy)
 	{
+		//Debug.Log ("Grabbing");
 		this.enemy = enemy;
 		playerRef = GameObject.FindObjectOfType<PlayerController> ();
 		grabTime = 3f;
@@ -19,7 +20,7 @@ public class Grabbing : EnemyState
 	public override void Update ()
 	{
 		if (!enemy.gamePaused) {
-			if (Vector3.Distance (this.enemy.transform.position, playerRef.transform.position) > 4f) {
+			if (Vector3.Distance (this.enemy.transform.position, playerRef.transform.position) > 7f) {
 				enemy.SetState (new Chasing (this.enemy));
 				playerRef.EndGrab ();
 			} else {
@@ -33,7 +34,7 @@ public class Grabbing : EnemyState
 
 	public override void OnEnter ()
 	{
-		grabTime = 2f;
+		grabTime = 3f;
 	}
 
 	public override void OnExit ()
