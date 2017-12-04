@@ -153,15 +153,15 @@ MonoBehaviour:
     - {fileID: 1670686942}
     - {fileID: 203695130}
   - points:
-    - {fileID: 1976825788}
     - {fileID: 1569585794}
     - {fileID: 1029318085}
     - {fileID: 369479843}
+    - {fileID: 1976825788}
   - points:
-    - {fileID: 1249854195}
-    - {fileID: 333026939}
     - {fileID: 406673405}
     - {fileID: 862942295}
+    - {fileID: 1249854195}
+    - {fileID: 333026939}
 --- !u!4 &10445112
 Transform:
   m_ObjectHideFlags: 0
@@ -247,10 +247,10 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1976825788}
   - {fileID: 1569585794}
   - {fileID: 1029318085}
   - {fileID: 369479843}
+  - {fileID: 1976825788}
   m_Father: {fileID: 10445112}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -532,6 +532,11 @@ Prefab:
       propertyPath: levels.Array.data[2].baseStrength
       value: 2.4
       objectReference: {fileID: 0}
+    - target: {fileID: 114672081045834998, guid: a7936658f2aace3439023750af75ca65,
+        type: 2}
+      propertyPath: number
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7936658f2aace3439023750af75ca65, type: 2}
   m_IsPrefabParent: 0
@@ -745,7 +750,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 87406700}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &406673404
 GameObject:
@@ -1217,6 +1222,21 @@ Prefab:
       propertyPath: particles
       value: 
       objectReference: {fileID: 50623299}
+    - target: {fileID: 114510405340278044, guid: a7936658f2aace3439023750af75ca65,
+        type: 2}
+      propertyPath: levels.Array.data[0].baseStrength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114510405340278044, guid: a7936658f2aace3439023750af75ca65,
+        type: 2}
+      propertyPath: levels.Array.data[1].baseStrength
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114510405340278044, guid: a7936658f2aace3439023750af75ca65,
+        type: 2}
+      propertyPath: levels.Array.data[2].baseStrength
+      value: 2.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7936658f2aace3439023750af75ca65, type: 2}
   m_IsPrefabParent: 0
@@ -2009,7 +2029,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 87406700}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1032532876
 GameObject:
@@ -2417,17 +2437,17 @@ Prefab:
     - target: {fileID: 114510405340278044, guid: a7936658f2aace3439023750af75ca65,
         type: 2}
       propertyPath: levels.Array.data[0].baseStrength
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114510405340278044, guid: a7936658f2aace3439023750af75ca65,
-        type: 2}
-      propertyPath: levels.Array.data[1].baseStrength
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114510405340278044, guid: a7936658f2aace3439023750af75ca65,
         type: 2}
+      propertyPath: levels.Array.data[1].baseStrength
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114510405340278044, guid: a7936658f2aace3439023750af75ca65,
+        type: 2}
       propertyPath: levels.Array.data[2].baseStrength
-      value: 2.25
+      value: 2.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7936658f2aace3439023750af75ca65, type: 2}
@@ -3188,7 +3208,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 87406700}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1581780175
 GameObject:
@@ -4007,7 +4027,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 87406700}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2023612415
 GameObject:

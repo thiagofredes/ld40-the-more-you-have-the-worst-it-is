@@ -51,18 +51,21 @@ public class EnemyController : BaseGameObject
 	protected override void OnGamePaused ()
 	{
 		animator.speed = 0f;
+		particles.Pause ();
 		gamePaused = true;
 	}
 
 	protected override void OnGameEnded (bool success)
 	{
 		animator.speed = 0f;
+		particles.Pause ();
 		gameEnded = true;
 	}
 
 	protected override void OnGameResumed ()
 	{
 		animator.speed = 1f;
+		particles.Play ();
 		gamePaused = false;
 	}
 }
