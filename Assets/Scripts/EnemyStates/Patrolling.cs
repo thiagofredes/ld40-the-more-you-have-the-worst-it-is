@@ -41,8 +41,8 @@ public class Patrolling : EnemyState
 				while (enemy.navMeshAgent.pathPending) {
 					yield return endOfFrame;
 				}
-				//Debug.Log (Vector3.Distance (enemy.navMeshAgent.transform.position, PatrolPointsController.GetPointFor (enemy.number, currentPatrolPoint).position));
 				while (Vector3.Distance (enemy.navMeshAgent.transform.position, PatrolPointsController.GetPointFor (enemy.number, currentPatrolPoint).position) > 0.5f) {
+//					Debug.Log (Vector3.Distance (enemy.navMeshAgent.transform.position, PatrolPointsController.GetPointFor (enemy.number, currentPatrolPoint).position));
 					if (!enemy.gamePaused && !enemy.gameEnded) {
 						yield return endOfFrame;
 					} else {

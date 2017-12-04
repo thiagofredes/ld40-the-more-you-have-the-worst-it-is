@@ -23,6 +23,7 @@ public class ExitController : MonoBehaviour
 
 	public void Activate ()
 	{
+		activator.enabled = true;
 		active = true;
 		particles.gameObject.SetActive (true);
 		particles.Play ();

@@ -18,6 +18,7 @@ public class Dizzy : EnemyState
 		playerRef.EndGrab ();
 		enemy.audioSource.Play ();
 		enemy.animator.SetTrigger ("dizzy");
+		enemy.particles.Stop ();
 	}
 
 	public override void Update ()

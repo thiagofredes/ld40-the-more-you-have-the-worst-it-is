@@ -20,6 +20,7 @@ public class Chasing : EnemyState
 		enemy.animator.SetTrigger ("chase");
 		if (!enemy.magnet.audioSource.isPlaying)
 			enemy.magnet.audioSource.Play ();
+		enemy.particles.Play ();
 	}
 
 	public override void OnEnter ()
@@ -43,6 +44,7 @@ public class Chasing : EnemyState
 				enemy.navMeshAgent.velocity = Vector3.zero;
 				enemy.SetState (new Grabbing (this.enemy));
 			}
+			enemy.particles.transform.rotation = Quaternion.LookRotation (-playerRef.transform.position + enemy.transform.position + Vector3.up);
 		}
 	}
 

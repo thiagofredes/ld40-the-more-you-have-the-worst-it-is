@@ -20,6 +20,8 @@ public class EnemyController : BaseGameObject
 	[HideInInspector]
 	public bool allowChaseByListening;
 
+	public ParticleSystem particles;
+
 	private EnemyState currentState;
 
 

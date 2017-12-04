@@ -20,7 +20,9 @@ public class Grabbing : EnemyState
 	public override void Update ()
 	{
 		if (!enemy.gamePaused && !enemy.gameEnded) {
-			if (Vector3.Distance (this.enemy.transform.position, playerRef.transform.position) > 7f) {
+			float distance = Vector3.Distance (this.enemy.transform.position, playerRef.transform.position);
+			float angle = Vector3.Angle (this.enemy.transform.forward, playerRef.transform.position - enemy.transform.position);
+			if (distance > 7f || angle > 60f) {
 				enemy.SetState (new Chasing (this.enemy));
 				playerRef.EndGrab ();
 			} else {

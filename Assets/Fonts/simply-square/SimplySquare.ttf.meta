@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 022b9d94e56a0a14bb4bf08a70a4b7ce
+timeCreated: 1512339624
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Simply Square JL
+  fontNames:
+  - Simply Square JL
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -28,6 +28,8 @@ public class GameUIManager : MonoBehaviour
 		pauseScreen.SetActive (false);
 		gameOverScreen.SetActive (false);
 		_instance = this;
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
 	}
 
 	void GameManager_GameEnded (bool success)
