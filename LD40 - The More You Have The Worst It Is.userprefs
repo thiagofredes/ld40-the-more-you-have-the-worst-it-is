@@ -1,18 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyStates\Chasing.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyController.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="59" Column="102" />
-      <File FileName="Assets\Scripts\EnemyController.cs" Line="49" Column="20" />
-      <File FileName="Assets\Scripts\EnemyStates\Dizzy.cs" Line="14" Column="1" />
-      <File FileName="Assets\Scripts\EnemyStates\Chasing.cs" Line="15" Column="59" />
-      <File FileName="Assets\Scripts\EnemyStates\Grabbing.cs" Line="15" Column="17" />
+      <File FileName="Assets\Scripts\EnemyController.cs" Line="68" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="D:\Google Drive\Dev\Games\Unity\LD40 - The More You Have The Worst It Is\Assets\Scripts\EnemyStates\Chasing.cs" line="12" column="1" />
-      <Breakpoint file="D:\Google Drive\Dev\Games\Unity\LD40 - The More You Have The Worst It Is\Assets\Scripts\EnemyStates\Dizzy.cs" line="13" column="1" />
+      <Breakpoint file="D:\Google Drive\Dev\Games\Unity\LD40 - The More You Have The Worst It Is\Assets\Scripts\UI\GameUIManager.cs" line="36" column="3" />
+      <Breakpoint file="D:\Google Drive\Dev\Games\Unity\LD40 - The More You Have The Worst It Is\Assets\Scripts\DeathCollider.cs" line="12" column="21" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
